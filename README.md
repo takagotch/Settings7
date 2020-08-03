@@ -55,7 +55,70 @@ RUN echo $'export SECRET_KEY_BASE=$(cat /home/devel/.secret_key_base)' \
 
 WORKDIR /app
 ```
+```sh
 
+cd apptky
+rails new apptky -BJS -d posgresql
+
+docker run -it alpine bin/sh
+exit
+
+vi Gemfile
+<%#
+gem 'bootsnap', '>= 1.1.0', require: false
++ gem 'webpacker'
+- gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+%>
+
+vi config/database.yml
+<!--
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
++ host: db
++ username: postgres
++ password:
+-->
+
+cd /apps/myapp
+bundle
+rails webpacker:install
+rails db:create
+
+mkdir app/javascript/stylesheets
+cp app/assets/stylesheets/scaffold.css app/javascript/stylesheets
+rm -rf app/assets
+
+vi app/javascript/packs/application.js
++ import "../stylesheets/scaffold.css";
+
+vi app/javascript/packs/application.js
+- <%= stylesheet_link_tag 'application', media: 'all' %>
++ <%= stylesheet_pack_tag 'application', media: 'all' %>
+
+rails g scaffold user name:string
+rails db:migrate
+
+cd /app/apptky
+bin/webpack-dev-server
+
+cd /apps/apptky
+rails s
+
+rails db:rollback
+rails d scaffold user
+
+docker-compose stop
+
+
+docker-compose up -d
+docker rm xxxxx
+docker-compose up -d --no-recreate
+```
 
 ###### cmd.sh
 
