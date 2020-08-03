@@ -78,6 +78,26 @@ case "$OSTYPE" in
     ;;
 esac
 ```
+
+###### MIGW64
+
+```sh
+git clone https://github.com/takagotch/settings7.git
+cd settings7
+cd docker-compose.win.yml docker-compose.override.yml
+
+docker volume create --name pgdata
+
+docker pull takagotch/settings7:latest
+docker-compose build
+docker-compose up -d
+docker-compose exec web bash
+docker-compose stop
+docker-compose down
+docker volume rm pgdata
+
+```
+
 ```docker-compose.win.yml
 version: '3'
 services:
