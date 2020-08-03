@@ -1,7 +1,12 @@
-### Setting7
+### Setting7 | Rails6 docker-compose
 ---
 
-
+```
+docker-compose run --rm web bundle install
+docker-compose run --rm web yarn install
+docker-compose up
+docker-compose exec web ./bin/rails db:create
+```
 
 ```docker-compose.yml
 version: '3'
