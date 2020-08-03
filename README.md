@@ -1,6 +1,65 @@
 ### Setting7
 ---
 
+
+
+```docker-compose.yml
+version: '3'
+services:
+  db:
+    image: postgres:11.2-alpine
+    volumes:
+     - ./tmp/db:/var/lib/postgresql/data
+  web:
+    build: .
+    command: /bin/sh
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: "0.0.0.0"
+      RAILS_SERVE_STATICFILES: "1"
+      EDITOR: "vim"
+    volumes:
+     - ./apps:/apps
+    ports:
+     - "3000:3000"
+     - "3035:3035"
+    depends_on:
+     - db
+    tty: true
+```
+
+```Dockerfile
+FROM takagotch/settings:latest
+
+ARG UID=1000
+ARG GID=1000
+
+RUN
+RUN
+RUN
+RUN
+
+WORKDIR
+COPY
+COPY
+RUN
+
+USER
+
+RUN
+RUN echo $'export SECRET_KEY_BASE=$(cat /home/devel/.secret_key_base)' \
+  >> /home/devel/.bashrc
+
+WORKDIR /app
+```
+
+
+
+```
+```
+
+
+---
+
 https://github.com/alpinelinux/docker-alpine
 
 https://hub.docker.com/_/alpine?ref=login
@@ -49,8 +108,4 @@ docker run -itd --name settings7 takagotch/settings7:latest
 docker exec -it settings7 bash
 
 ```
-
-```
-```
-
 
