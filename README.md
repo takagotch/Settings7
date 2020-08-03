@@ -57,6 +57,18 @@ WORKDIR /app
 ```
 
 
+###### cmd.sh
+
+```
+git clone https://github.com/takagotch/setting7.git
+cd settings7
+
+./setup.sh
+docker-compose up -d
+docker-compose exec web bash
+docker-compose stop
+docker-compose down
+```
 
 ```sh
 #!/bin/bash
