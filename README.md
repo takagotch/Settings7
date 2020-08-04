@@ -265,3 +265,22 @@ https://docs.docker.com/compose/rails/
 ```
 
 
+```
+
+```
+
+
+```
+// Initial tutorial
+git clone https://github.com/docker/getting-started.git
+cd getting-started
+docker build -t docker101tutorial .
+docker run -d -p 80:80 --name docker-tutorial docker101tutorial
+docker login
+USERNAME
+PASSWORD
+docker tag docker101tutorial takagotch/docker101/tutorial
+docker push takagotch/docker101tutorial
+```
+
+
