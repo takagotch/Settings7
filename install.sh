@@ -6,5 +6,13 @@
 //
 //
 
+// production
+//docker-compose run web rails new . --force --no-deps --database=postgresql
+// test
+docker-compose run web rails new . --force --no-deps 
+ls -l
+sudo chown -R $USER:$USER .
+docker-compose build
 
-
+// config/database.yml
+docker-compose up
