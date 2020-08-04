@@ -257,3 +257,11 @@ docker exec -it settings7 bash
 
 ```
 
+###### docker docs
+https://docs.docker.com/compose/rails/
+
+```
+
+```
+
+
