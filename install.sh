@@ -7,7 +7,7 @@
 //
 
 // production
-//docker-compose run web rails new . --force --no-deps --database=postgresql
+// docker-compose run web rails new . --force --no-deps --database=postgresql
 // test
 docker-compose run web rails new . --force --no-deps 
 ls -l
@@ -16,3 +16,10 @@ docker-compose build
 
 // config/database.yml
 docker-compose up
+docker-compose run web rake db:create
+
+// destroy
+// docker-compose down
+
+
+
